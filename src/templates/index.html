@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Generador de Informes Dataverse</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f6f9; margin: 0; padding: 40px; }
+        .container { max-width: 600px; background: #ffffff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); margin: auto; }
+        h2 { color: #003366; }
+        label { font-weight: bold; display: block; margin-top: 15px; color: #333; }
+        input[type="text"], input[type="password"] { width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        button { background-color: #003366; color: white; border: none; padding: 12px 20px; font-size: 16px; border-radius: 4px; cursor: pointer; margin-top: 20px; width: 100%; }
+        button:hover { background-color: #002244; }
+        .alert { padding: 15px; margin-top: 20px; border-radius: 4px; background-color: #e7f3fe; color: #31708f; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>📊 Generador de Informes Dataverse</h2>
+        <p>Herramienta administrativa para exportación de metadatos institucionales.</p>
+        
+        <form method="POST" action="/informes/generar">
+            <label>URL Instancia Dataverse:</label>
+            <input type="text" name="base_url" value="https://research-data.urosario.edu.co" required>
+            
+            <label>API Key (Superuser):</label>
+            <input type="password" name="api_token" required>
+            
+            <button type="submit">🚀 Iniciar Extracción y Descargar Excel</button>
+        </form>
+        
+        {% if mensaje %}
+            <div class="alert">{{ mensaje }}</div>
+        {% endif %}
+    </div>
+</body>
+</html>
